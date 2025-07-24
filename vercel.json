@@ -22,11 +22,7 @@
   "rewrites": [
     {
       "source": "/sc/:match",
-      "destination": "https://crus-link.netlify.app/:match"
-    },
-    {
-      "source": "/a/e",
-      "destination": "https://stats.crus.dev/api/event"
+      "destination": "https://crus.live/:match"
     }
   ]
 }
