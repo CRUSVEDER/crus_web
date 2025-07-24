@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Crus's Blog</title>
+        <link>https://localhost:3003/</link>
+        <description>Cybersecurity blog</description>
+        <lastBuildDate>Thu, 24 Jul 2025 18:37:47 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights reserved 2025, Crus</copyright>
+        <item>
+            <title><![CDATA[How to Run Ai locally on Your PC]]></title>
+            <link>https://localhost:3003/posts/how-to-run-ai-locally-on-your-pc</link>
+            <guid isPermaLink="false">https://localhost:3003/posts/how-to-run-ai-locally-on-your-pc</guid>
+            <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to Run Ai locally on Your PC]]></description>
+            <content:encoded><![CDATA[How to Run Ai locally on Your PC]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Linux Networking Essentials]]></title>
+            <link>https://localhost:3003/posts/linux-networking-essentials</link>
+            <guid isPermaLink="false">https://localhost:3003/posts/linux-networking-essentials</guid>
+            <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Linux Networking Essentials]]></description>
+            <content:encoded><![CDATA[Linux Networking Essentials]]></content:encoded>
+        </item>
+    </channel>
+</rss>

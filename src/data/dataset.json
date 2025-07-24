@@ -1,0 +1,126 @@
+{
+  "ctf_tools": {
+    "title": "CTF Tools",
+    "headers": ["Tool", "Link", "How to Use"],
+    "rows": [
+      ["CyberChef", "https://gchq.github.io/CyberChef/", "Paste input (like XOR, Base64, ROT13), and view output instantly."],
+      ["Binwalk", "https://github.com/ReFirmLabs/binwalk", "Analyze binary firmware files for embedded files or executable code."],
+      ["ExifTool", "https://exiftool.org/", "Extract metadata from files like images or documents: `exiftool file.jpg`."],
+      ["StegSolve", "https://github.com/zardus/ctf-tools", "Steganography GUI for analyzing image planes, color layers, etc."],
+      ["hashcat", "https://hashcat.net/hashcat/", "Advanced hash cracking tool: `hashcat -m <mode> hashes.txt wordlist.txt`."],
+      ["John the Ripper", "https://www.openwall.com/john/", "Brute-force or dictionary attack on hashed passwords: `john hash.txt`."],
+      ["strings", "https://man7.org/linux/man-pages/man1/strings.1.html", "Extract printable strings from binaries: `strings file.bin`."],
+      ["Zsteg", "https://github.com/zed-0xff/zsteg", "Detect hidden data in PNG and BMP files: `zsteg file.png`."],
+      ["Ghidra", "https://ghidra-sre.org/", "Reverse engineering suite to decompile and analyze binaries."],
+      ["Radare2", "https://rada.re/n/", "Powerful CLI-based reverse engineering framework."],
+      ["BaseCrack", "https://github.com/mohammadplus/BaseCrack", "Auto-detect and decode base-encoded strings."],
+      ["QR Tools", "https://zxing.org/", "Decode QR codes from images. Use CLI or online scanner."]
+    ]
+  },
+  "linux_commands": {
+    "title": "Important Linux Commands",
+    "headers": ["Command", "Description", "Example"],
+    "rows": [
+      ["ls", "List files and directories", "`ls -la`"],
+      ["cd", "Change the current directory", "`cd /var/log`"],
+      ["pwd", "Print working directory path", "`pwd`"],
+      ["grep", "Search for patterns inside files", "`grep -i 'error' logfile.txt`"],
+      ["chmod", "Change file permissions", "`chmod +x script.sh`"],
+      ["chown", "Change file owner/group", "`chown user:group file.txt`"],
+      ["ps", "List running processes", "`ps aux | grep nginx`"],
+      ["netstat", "Network statistics and open ports", "`netstat -tulpn`"],
+      ["curl", "Fetch data from URLs", "`curl -I https://example.com`"],
+      ["wget", "Download files from web", "`wget https://site.com/file.zip`"],
+      ["find", "Search files/folders", "`find / -name 'flag.txt'`"],
+      ["tar", "Compress/decompress archives", "`tar -xvf archive.tar`"],
+      ["df", "Show disk usage", "`df -h`"],
+      ["top", "Live view of processes and memory", "`top`"]
+    ]
+  },
+  "hash_manual_identification": {
+    "title": "Manual Hash Identification (Complete CTF Edition)",
+    "headers": ["Hash Type", "Length", "Starts With", "How to Identify", "Example"],
+    "rows": [
+      ["MD5", "32", "—", "32-character lowercase hex; no prefix", "5f4dcc3b5aa765d61d8327deb882cf99"],
+      ["SHA-1", "40", "—", "40-character hex; used in Git, tokens", "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"],
+      ["SHA-256", "64", "—", "64-character hex; strong hash", "5e884898da28047151d0e56f8dc6292773603d0d6aabbddf02"],
+      ["SHA-512", "128", "—", "128-character hex", "cf83e1357eefb8bdf1542850d66d8007..."],
+      ["NTLM", "32", "—", "Used in Windows auth; same length as MD5", "8846f7eaee8fb117ad06bdd830b7586c"],
+      ["LM", "32", "—", "Uppercase-only hex; legacy Windows hash", "E52CAC67419A9A224A3B108F3FA6CB6D"],
+      ["bcrypt", "~60", "$2a$, $2b$, $2y$", "Prefix includes cost; slow to brute", "$2b$12$KIX8YfC9.U4pTfOZ.BJXH.rPU7Vp5t..."],
+      ["SHA-crypt", ">50", "$5$ or $6$", "$5$=SHA256, $6$=SHA512; Linux shadow", "$6$saltstring$hashedvalue..."],
+      ["MySQL5", "41", "*", "* + 40 hex chars", "*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29"],
+      ["MySQL 3.23", "16", "—", "Legacy MySQL hex hash", "606717496665bcba"],
+      ["Cisco Type 7", "Variable", "07 or 0x", "Weak XOR encoding", "070C285F4D06"],
+      ["WPA/WPA2 PSK", "64", "—", "Derived PMK from Wi-Fi handshake", "a49d1f1a4c70e6c1780b26a0e706ecce..."],
+      ["Base64 / JWT", "Variable", "eyJ", "Base64 tokens with 3 parts separated by dots", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."],
+      ["Unix DES", "13", "2-char salt", "Short password hashes in old Unix systems", "rtq1kO1gF5G9s"],
+      ["SHA3-256", "64", "—", "Looks like SHA-256 but stronger; less common", "a7ffc6f8bf1ed76651c14756a061d662f580..."],
+      ["RIPEMD-160", "40", "—", "Similar length to SHA-1 but different hash family", "24f0145d0131e5a89ee1c8dc05e8e2a43b44a070"],
+      ["SSHA (LDAP)", ">40", "{SSHA}", "Base64, usually in LDAP passwd", "{SSHA}U3Ryb25nU2FsdA=="],
+      ["Oracle 10g", "16", "—", "Hex string, usually uppercase", "S:4C8F5B5A6A4D6F77"],
+      ["Oracle 11g", "48", "S:", "Base64 + 'S:' prefix", "S:8A3B041DD3B2E0DF4C8F233F0A7F9F365D0F58E4"],
+      ["Oracle 12c", "64", "S:", "Base64 + 'S:' prefix", "S:698D51A19D8A121B48A199182E037073"],
+      ["OpenSSL", "Variable", "—", "Base64, usually in OpenSSL passwd", "crypt:123456"],
+      ["PBKDF2", "Variable", "$pbkdf2$", "Key derivation hashes, e.g., in Django", "$pbkdf2-sha256$29000$saltsalt$hashedvalue"],
+      ["SCRYPT", "Variable", "$scrypt$", "Strong KDF; seen in newer systems", "$scrypt$ln=14,r=8,p=1$..."],
+      ["Hex Encoding", "Even length", "0x (optional)", "Only 0-9 a-f; often seen as 0x prefix or raw", "48656c6c6f20576f726c64"],
+      ["Binary", "Multiples of 8 bits", "0 or 1", "Only 0 and 1; decode as 8-bit ASCII", "01001000 01101001"],
+      ["Decimal ASCII", "Variable", "—", "Numerical values representing characters", "72 101 108 108 111"],
+      ["Octal", "Variable", "\\", "Starts with backslash or 0 prefix", "\\110\\145\\154\\154\\157"],
+      ["Base32", "Variable", "—", "Uses A-Z and 2-7; padding with `=`", "JBSWY3DPEBLW64TMMQ======"],
+      ["Base58", "Variable", "—", "Avoids ambiguous chars (0, O, I, l)", "5HueCGU8rMjxEXxiPuD5BDu..."],
+      ["Base62", "Variable", "—", "Uses 0-9, A-Z, a-z; no special chars", "aZ09BZyx12"],
+      ["Base91", "Variable", "—", "High-entropy printable ASCII; hard to distinguish manually", "nXz.bBFAkE>Is`U4W/oD"],
+      ["Base85 / Ascii85", "Variable", "<~", "Starts with `<~` and ends with `~>`", "<~ARTY*~>"],
+      ["URL Encoding", "Variable", "%", "Contains `%` followed by two hex digits", "Hello%20World"],
+      ["HTML Entities", "Variable", "&", "Looks like `&#65;` or `&lt;`", "&#72;&#69;&#76;&#76;&#79;"],
+      ["Unicode Escape", "Variable", "\\u", "Starts with `\\u` followed by hex", "\\u0048\\u0065\\u006C"],
+      ["MIME Quoted-Printable", "Variable", "=", "Uses =XX hex codes", "Hello=20World=21"],
+      ["Punycode", "Variable", "xn--", "Used for encoding international domain names", "xn--fsq.com (for bü.com)"],
+      ["High Entropy String", "Variable", "—", "Random mix of symbols, upper/lower/digits; likely encoded or encrypted", "N2s93bqBvR+qDd6nT2tRmQ=="],
+      ["UUID", "36", "—", "Hex format with dashes, standard UUID v4", "123e4567-e89b-12d3-a456-426614174000"],
+      ["CRC32", "8", "—", "Short 8-character hex hash; usually checksums", "414fa339"],
+      ["Adler-32", "8", "—", "Alternative to CRC32, short checksum", "03da0195"],
+      ["Unix Epoch Time", "10", "1-9", "10-digit number; converts to datetime", "1699459200"],
+      ["Float Timestamp", "13", "1-9", "13-digit number; milliseconds", "1699459200123"],
+      ["Base36", "Variable", "—", "Digits + lowercase letters; no punctuation", "k3j5l9"]
+    ]
+  },
+  
+  "ctf_hash_cracking_tips": {
+    "title": "CTF Hash Cracking Techniques",
+    "headers": ["Hash Type", "Hashcat Mode", "Tool", "Tips"],
+    "rows": [
+      ["MD5", "0", "hashcat / john", "Use rockyou.txt or crackstation"],
+      ["SHA-1", "100", "hashcat / john", "Try online lookup or mask attack"],
+      ["SHA-256", "1400", "hashcat / john", "Slow, often salted; use rules"],
+      ["SHA-512", "1700", "hashcat", "Very slow; requires GPU + rockyou"],
+      ["bcrypt", "3200", "hashcat", "CPU-heavy; start with common passwords"],
+      ["NTLM", "1000", "hashcat", "Very fast to crack; rainbow tables work"],
+      ["LM", "3000", "hashcat", "Split halves; trivial to crack"],
+      ["WPA/WPA2", "22000", "hashcat + .22000 file", "Capture handshake via airodump-ng"],
+      ["MySQL5", "300", "hashcat", "Found in web CTFs; often weak"],
+      ["SHA-crypt", "1800/7400", "hashcat", "Linux passwords; slow to crack"],
+      ["JWT (HS256)", "—", "jwt_tool / jwtcat", "Check for weak secrets or guess the key"],
+      ["Base64", "—", "base64 -d / CyberChef", "Check for nested encodings or hex inside"]
+    ]
+  },
+
+  "ctf_hash_cracking_resources": {
+    "title": "Cracking Resources and Tools",
+    "headers": ["Purpose", "Tool/Link", "Notes"],
+    "rows": [
+      ["Hash identification", "https://github.com/psypanda/hashID", "`hashid <hash>`"],
+      ["Alternative hash checker", "https://github.com/blackploit/hash-identifier", "Run: `hash-identifier`"],
+      ["Online hash crackers", "https://crackstation.net", "Fastest for MD5/SHA1"],
+      ["Online hash lookup", "https://hashes.com", "Use after local cracking fails"],
+      ["Base64 decoder", "https://gchq.github.io/CyberChef", "Try magic mode for nested encoding"],
+      ["Cisco hash decoder", "https://packetlife.net/toolbox/cisco-password-cracker/", "Paste Type 7 strings"],
+      ["JWT analyzer", "https://jwt.io", "Paste token, analyze payload"],
+      ["Wordlists", "https://github.com/danielmiessler/SecLists", "Use rockyou, common creds, fuzz lists"],
+      ["Rainbow tables", "https://project-rainbowcrack.com", "Use for LM/NTLM/MD5"]
+    ]
+  }
+   
+}

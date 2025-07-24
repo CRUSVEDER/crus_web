@@ -1,0 +1,32 @@
+{
+  "headers": [
+    {
+      "source": "/assets/(.*).mp3",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sc/:match",
+      "destination": "https://crus-link.netlify.app/:match"
+    },
+    {
+      "source": "/a/e",
+      "destination": "https://stats.crus.dev/api/event"
+    }
+  ]
+}

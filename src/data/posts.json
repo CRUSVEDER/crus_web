@@ -1,0 +1,34 @@
+[
+  
+  {
+    "title": "How to Run Ai locally on Your PC",
+    "url": "https://crusblog.vercel.app/posts/blog-18-running-ai-on-your-local-pc-and-finetune-it/",
+    "slug": "how-to-run-ai-locally-on-your-pc",
+    "cover": {
+      "imageFile": "test check new.avif"
+    },
+    "date": "2024-07-31",
+    "category": "react",
+    "tags": ["ollama", "deepseek-r1", "code editor"],
+    "time": {
+      "text": "5 min read"
+    }
+  },
+  {
+    "title": "Linux Networking Essentials",
+    "url": "https://crusblog.vercel.app/posts/blog-10-linux-networking-essentials/",
+    "slug": "linux-networking-essentials",
+    "cover": {
+      "imageFile": "linuxnetwork.png"
+    },
+    "date": "2024-01-12",
+    "category": "Guide",
+    "tags": ["tips", "Networking", "guide", "cybersecurity"],
+    "time": {
+      "text": "6 min read"
+    }
+  }
+
+  
+
+]

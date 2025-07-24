@@ -1,0 +1,502 @@
+---
+date: "2022-01-01"
+title: "Blog's Skeleton"
+tags: ["structure", "code", "Blog"]
+category: "Development"
+cover:
+  imageFile: "test-newfun/cover.png"
+---
+
+### Mastering Basic Markdown Syntax for Your Blog
+
+This guide covers the essential Markdown syntax for formatting your blog posts, inspired by the [Markdown Guide](https://www.markdownguide.org). Whether you're writing tutorials, documentation, or blog posts, these elements will help you create clear, professional, and engaging content.
+
+-----
+
+## Front Matter
+
+Before diving into the content, let's look at the **front matter**. This is metadata about your blog post, typically written in YAML, and it helps static site generators organize your content.
+
+```yaml
+---
+date: "2025-07-24"
+title: "Basic Markdown Syntax"
+tags: ["markdown", "writing", "syntax", "formatting"]
+category: "Writing"
+cover:
+  imageFile: "test-newfun/cover.png"
+---
+```
+
+**What's included:**
+
+  * **`date`**: The publication date of your post.
+  * **`title`**: The title of your blog post.
+  * **`tags`**: Keywords that describe the content, useful for categorization and search.
+  * **`category`**: A broader classification for your post.
+  * **`cover`**: Information about the cover image for your post, including its `imageFile` path.
+
+-----
+
+## Headings
+
+Use number signs (`#`) to create **headings**. The number of `#` symbols indicates the heading level (1-6), with `#` being the largest and `######` the smallest.
+
+```markdown
+# Heading Level 1
+## Heading Level 2
+### Heading Level 3
+#### Heading Level 4
+##### Heading Level 5
+###### Heading Level 6
+```
+
+**Rendered Output:**
+
+# Heading Level 1
+
+## Heading Level 2
+
+### Heading Level 3
+
+#### Heading Level 4
+
+##### Heading Level 5
+
+###### Heading Level 6
+
+> **Best Practice**: Always include a space after the `#` symbols and place blank lines before and after headings for better readability and compatibility across different Markdown renderers.
+
+-----
+
+## Paragraphs
+
+Separate **paragraphs** with a blank line. Markdown automatically treats text separated by blank lines as new paragraphs. Keep your text left-aligned and avoid indenting with spaces or tabs, as this can be interpreted as code.
+
+```markdown
+This is the first paragraph of my blog post. It contains some introductory text.
+
+This is the second paragraph. It continues the discussion and provides more details on the topic at hand.
+```
+
+**Rendered Output:**
+
+This is the first paragraph of my blog post. It contains some introductory text.
+
+This is the second paragraph. It continues the discussion and provides more details on the topic at hand.
+
+> **Best Practice**: Don't indent paragraphs unless they're part of a list or blockquote. Unnecessary indentation can lead to formatting issues.
+
+-----
+
+## Emphasis
+
+You can emphasize text in Markdown using **bold** and *italic* formatting.
+
+### Bold
+
+Use double asterisks (`**`) or double underscores (`__`) around text to make it **bold**.
+
+```markdown
+I love **bold text**!
+You can also use __double underscores__ for bolding.
+```
+
+**Rendered Output:**
+
+I love **bold text**\!
+You can also use **double underscores** for bolding.
+
+> **Best Practice**: Using asterisks for bold text, especially within words (e.g., `un**bold**ed`), is generally recommended to avoid compatibility issues with different Markdown parsers.
+
+### Italic
+
+Use single asterisks (`*`) or single underscores (`_`) around text to make it *italic*.
+
+```markdown
+This is *italic text*.
+You can also use _single underscores_ for italicizing.
+```
+
+**Rendered Output:**
+
+This is *italic text*.
+You can also use *single underscores* for italicizing.
+
+> **Best Practice**: Similar to bolding, using asterisks for italic text, even within words (e.g., `un*italic*ized`), helps ensure consistent rendering.
+
+-----
+
+## Lists
+
+Markdown supports both ordered and unordered lists, making it easy to present information clearly.
+
+### Ordered Lists
+
+Use numbers followed by periods (e.g., `1.`) for **ordered lists**. The numbers don't need to be sequential in your Markdown source; Markdown will automatically render them correctly starting from `1.`.
+
+```markdown
+1. First item
+2. Second item
+3. Third item
+```
+
+**Rendered Output:**
+
+1.  First item
+2.  Second item
+3.  Third item
+
+### Unordered Lists
+
+Use dashes (`-`), asterisks (`*`), or plus signs (`+`) for **unordered lists**.
+
+```markdown
+- Item one
+- Item two
+- Item three
+```
+
+**Rendered Output:**
+
+  - Item one
+  - Item two
+  - Item three
+
+> **Best Practice**: Stick to one delimiter (`-`, `*`, or `+`) within a single list for consistency and cleaner Markdown.
+
+### Nested Lists
+
+You can create nested lists by indenting subsequent list items with two or four spaces, or a tab.
+
+```markdown
+- Main item
+  - Nested item A
+  - Nested item B
+    1. Ordered nested item 1
+    2. Ordered nested item 2
+```
+
+**Rendered Output:**
+
+  - Main item
+      - Nested item A
+      - Nested item B
+        1.  Ordered nested item 1
+        2.  Ordered nested item 2
+
+-----
+
+## Blockquotes
+
+Use the greater-than sign (`>`) to create **blockquotes**. This is great for quoting external sources or highlighting important text. Add `>` on blank lines for multi-paragraph blockquotes.
+
+```markdown
+> This is a blockquote. It's often used to quote someone or highlight a passage.
+>
+> This is the second paragraph of the blockquote, demonstrating how to include multiple paragraphs within a single quote.
+```
+
+**Rendered Output:**
+
+> This is a blockquote. It's often used to quote someone or highlight a passage.
+>
+> This is the second paragraph of the blockquote, demonstrating how to include multiple paragraphs within a single quote.
+
+-----
+
+## Code
+
+Markdown is excellent for displaying code, both inline and in dedicated blocks.
+
+### Inline Code
+
+Use single backticks (`` ` ``) for **inline code**. This is useful for mentioning variable names, commands, or short code snippets within your regular text.
+
+```markdown
+To install dependencies, type `npm install` in your terminal.
+```
+
+**Rendered Output:**
+
+To install dependencies, type `npm install` in your terminal.
+
+### Code Blocks
+
+Use triple backticks (`     `) to create **code blocks**. You can specify a language identifier right after the opening triple backticks for syntax highlighting, which makes your code much easier to read.
+
+````javascript
+```javascript
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+greet("Markdown");
+```
+````
+
+**Rendered Output:**
+
+```javascript
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+greet("Markdown");
+```
+
+-----
+
+## Links
+
+Create **links** to external or internal resources.
+
+### Inline Links
+
+The most common way is with `[link text](URL)`. You can also add an optional title attribute that appears as a tooltip on hover: `[link text](URL "Title")`.
+
+```markdown
+Visit [Google](https://www.google.com) for more information.
+Check out the [Markdown Guide][1] for an in-depth reference.
+
+[1]: https://www.markdownguide.org "Official Markdown Guide"
+```
+
+**Rendered Output:**
+
+Visit [Google](https://www.google.com) for more information.
+Check out the [Markdown Guide](https://www.markdownguide.org) for an in-depth reference.
+
+### Reference-Style Links
+
+These keep your paragraphs cleaner by defining link URLs separately, typically at the end of the document or section.
+
+```markdown
+For more details, refer to [this article][article-ref] or [that resource][resource-id].
+
+[article-ref]: https://example.com/article "My Article"
+[resource-id]: https://example.com/resource
+```
+
+**Rendered Output:**
+
+For more details, refer to [this article](https://www.google.com/url?sa=E&source=gmail&q=https://example.com/article "My Article") or [that resource](https://www.google.com/url?sa=E&source=gmail&q=https://example.com/resource).
+
+-----
+
+## Images
+
+Add **images** to your blog posts using a similar syntax to links, but with an exclamation mark (`!`) at the beginning.
+
+```markdown
+![Alt text for the image](/assets/sample.jpg "Optional image title")
+![Another example image](https://picsum.photos/600/400 "An image from the web")
+```
+
+  * **`!`**: Indicates an image.
+  * **`[alt text]`**: Alternative text that describes the image. This is crucial for accessibility and SEO.
+  * **`(URL "title")`**: The path to your image file, and an optional title that appears on hover.
+
+**Rendered Output:**
+![Alt text for the image](/assets/sample.jpg "Optional image title")
+![Another example image](https://picsum.photos/600/400 "An image from the web")
+
+### Linked Images
+
+You can also wrap an image in a link to make the image clickable.
+
+```markdown
+[![Alt text for the image](/assets/sample.jpg)](https://example.com/linked-page)
+[![A clickable web image](https://picsum.photos/300/200)](https://picsum.photos/ "Click to visit Picsum")
+```
+
+**Rendered Output:**
+
+[![Alt text for the image](/assets/sample.jpg)](https://example.com/linked-page)
+[![A clickable web image](https://picsum.photos/300/200)](https://picsum.photos/ "Click to visit Picsum")
+
+-----
+
+## Horizontal Rules
+
+Use three or more asterisks (`***`), dashes (`---`), or underscores (`___`) on a line by themselves to create a **horizontal rule**. This is useful for separating sections of content visually.
+
+```markdown
+---
+```
+
+**Rendered Output:**
+
+-----
+
+> **Best Practice**: Always add blank lines before and after horizontal rules to ensure they render correctly and to improve readability.
+
+-----
+
+## YouTube Embed Code (HTML)
+
+While not standard Markdown, many blog platforms (especially those supporting MDX or similar rendering) allow you to embed **HTML directly**, which is essential for things like YouTube videos.
+
+```html
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  className="rounded-md border border-gray-200 dark:border-gray-700"
+/>
+```
+**Rendered Output:**
+
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.youtube.com/embed/KkuaW3tvHW0"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  className="rounded-md border border-gray-200 dark:border-gray-700"
+/>
+
+**Important**: Remember to replace `VIDEO_ID` with the actual ID of the YouTube video you want to embed. The `className` attribute here is likely for styling with a framework like Tailwind CSS.
+
+-----
+
+## Tables (New Addition)
+
+Tables are a powerful way to organize data in a structured format. Markdown tables are created using pipes (`|`) and hyphens (`-`).
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+| :------- | :------: | -------: |
+| Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
+| Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
+```
+
+  * The first line defines the **headers** for each column.
+  * The second line defines the **alignment** for each column:
+      * `:` on the left (`:---`) for left-aligned.
+      * `:` on both sides (`:---:`) for center-aligned.
+      * `:` on the right (`---:`) for right-aligned.
+  * Subsequent lines contain the **data rows**.
+
+**Rendered Output:**
+
+| Header 1 | Header 2 | Header 3 |
+| :------- | :------: | -------: |
+| Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
+| Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
+
+-----
+
+## Strikethrough (New Addition)
+
+Use double tildes (`~~`) to add a **strikethrough** effect to text. This is useful for indicating deleted content or something that's no longer relevant.
+
+```markdown
+This text is ~~no longer valid~~.
+```
+
+**Rendered Output:**
+
+This text is ~~no longer valid~~.
+
+-----
+
+## Task Lists (New Addition)
+
+Task lists (also known as checkboxes) are an extension of Markdown, commonly supported by platforms like GitHub. They are useful for creating checklists.
+
+```markdown
+- [x] Complete task one
+- [ ] Complete task two
+- [ ] Complete task three
+```
+
+  * Use `- [ ]` for an unchecked task.
+  * Use `- [x]` for a checked task.
+
+**Rendered Output:**
+
+  - [x] Complete task one
+  - [ ] Complete task two
+  - [ ] Complete task three
+
+-----
+
+## HTML in MDX
+
+For advanced styling and interactive components, MDX (Markdown with JSX) allows you to embed **HTML tags** and even React components directly within your Markdown. This provides immense flexibility for dynamic content.
+
+```mdx
+<div className="text-center text-blue-500 dark:text-blue-400">
+  This is centered, styled text using Tailwind CSS classes!
+</div>
+```
+
+**Rendered Output:**
+
+<div className="text-center text-purple-500 dark:text-purple-300">
+  This is centered and purple in both light and dark mode!
+</div>
+
+
+-----
+```
+*Tags: {tags.join(", ")}*
+```
+*Tags: {tags.join(", ")}*
+
+-----
+## 🧠 Final Notes / Recap
+
+Here’s a quick summary of what I added to this Markdown/MDX reference and *why I did it*. Treating this as a personal doc for future reference.
+
+---
+
+###  Changes I Made (and Why I Made Them)
+
+1. **Changed Title → *Mastering Basic Markdown Syntax for Your Blog***
+   * To make it sound more useful + clear for blog use cases. More specific than “Blog’s Skeleton.”
+
+2. **Added a Front Matter Section**
+   * Front matter (the `---` block at the top) is **super important** when using MDX with static site generators (like Next.js, Astro, Hugo).
+   * This helps with: metadata, layout, SEO, and blog sorting.
+   * I explained it up front because it’s foundational.
+
+3. **Nested Lists Example**
+   * Markdown supports nested lists, which are **super helpful** when structuring ideas, to-dos, or breakdowns.
+   * Good for writing tutorials or anything hierarchical.
+
+4. **Markdown Tables**
+   * I added a section with table examples and alignment options.
+   * Tables are **frequently used** in documentation and blogs, so having a quick ref is handy.
+
+5. **Strikethrough Section**
+   * Markdown supports `~~strikethrough~~`, which is great for:
+     * Showing edits or deprecations
+     * Fun/ironic tone
+
+6. **Task Lists**
+   * Added `[ ]` and `[x]` checkbox examples.
+   * These are great for interactive docs or to-do-style content.
+   * GitHub and many MDX renderers support them.
+
+7. **Best Practice Notes**
+   * Sprinkled in **Best Practice** callouts (e.g. use consistent heading levels, spacing, etc.).
+   * Helps avoid messy markdown and makes things render more predictably.
+
+8. **Other Tweaks & Cleanups**
+   * Changed some awkward phrases for better flow.
+   * Made formatting more consistent (like bolding Markdown syntax when first introduced).
+   * Replaced YouTube embed URL with the correct format (`https://www.youtube.com/embed/...`).
+   * Noted that `className` in MDX probably maps to Tailwind usage.
+   * Replaced the specific image reference (`test-newfun/cover.png`) with a more generic or placeholder one — helps avoid broken images.
+
+---
+
+### 📝 Why This Matters (for Me)
+
+This is basically a **cheatsheet + dump** of things I want to remember when working with Markdown/MDX in blog projects. Especially useful when using Tailwind, React components, and embedded HTML. All of this helps make the blog look more polished and professional without doing too much custom styling.

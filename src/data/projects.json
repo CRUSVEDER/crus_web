@@ -1,0 +1,52 @@
+[
+
+  {
+    "name": "CrusBlog",
+    "url": "https://crusblog.vercel.app",
+    "image": "crusblog.png",
+    "desc": "A blog dedicated to CTF writeups, showcasing my journey in Capture The Flag competitions.",
+    "tech": ["react", "nextjs", "vercel"]
+  },
+  {
+    "name": "AI PDF Summarizer & Q&A Tool",
+    "url": "https://github.com/CRUSVEDER/pdf_sum_tool",
+    "image": "pdf_sum.png",
+    "desc": "AI-powered web app to summarize PDFs and answer questions using fine-tuned BART/T5 and DeepSeek-R1 via Ollama.",
+    "tech": ["python"]
+  },
+  {
+    "name": "Image Steganography Tool",
+    "url": "https://github.com/CRUSVEDER/Image-Steganography-Tool",
+    "image": "stego.png",
+    "desc": "Command-line tool to encode and decode messages in images using LSB steganography and Pillow.",
+    "tech": ["python"]
+  },
+  {
+    "name": "MD5 Malware Scanner",
+    "url": "https://github.com/CRUSVEDER/Malware-Scanner",
+    "image": "malware_scn.png",
+    "desc": "Python/Tkinter GUI scanner that compares file hashes against known malware signatures.",
+    "tech": ["python"]
+  },
+  {
+    "name": "ScanForge: TCP Port Scanner",
+    "url": "https://github.com/CRUSVEDER/ScanForge-Advanced-TCP-Port-Scanner",
+    "image": "networkscanner.png",
+    "desc": "Scapy-based port scanner with multithreading, banner grabbing, and command-line target selection.",
+    "tech": ["python"]
+  },
+  {
+    "name": "Password Manager with SHA256 & 2FA",
+    "url": "https://github.com/CRUSVEDER/PasswordManager",
+    "image": "password_manager.png",
+    "desc": "Secure password vault with encryption, SHA256, password generation, and two-factor authentication.",
+    "tech": ["python"]
+  },
+  {
+    "name": "GachaSite",
+    "url": "https://gacha-site.vercel.app/",
+    "image": "gachasite.png",
+    "desc": "Genshin Impact is an expansive open-world action RPG that requires strategic planning and resource management.",
+    "tech": ["javascript"]
+  }
+]
