@@ -14,7 +14,7 @@ type File = {
   content: string
 }
 
-const firstFourLines = (file: File) => {
+const firstTwoLines = (file: File) => {
   file.excerpt = file.content
     .split("\n")
     .filter((item: string) => item.length)
@@ -45,7 +45,7 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = await fs.readFile(join(postsDirectory, slug, filePath), "utf8")
   const { data, excerpt, content } = matter(fileContents, {
     // @ts-expect-error comment
-    excerpt: firstFourLines,
+    excerpt: firstTwoLines,
   })
 
   // Time to Read
