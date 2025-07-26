@@ -97,9 +97,15 @@ const PostCard = ({ post }: Props) => {
         {excerpt ? (
           <div
             className="flex w-full max-w-full text-gray-400 dark:text-gray-300 prose-md prose prose-pink card-description dark:prose-dark"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
+            dangerouslySetInnerHTML={{ 
+              __html: excerpt.trim() || `<p>No description available</p>` 
+            }}
           />
-        ) : null}
+        ) : (
+          <div className="flex w-full max-w-full text-gray-400 dark:text-gray-300 prose-md prose prose-pink card-description dark:prose-dark">
+            <p>No description available</p>
+          </div>
+        )}
         <div className="flex relative items-center">
           <div className="flex overflow-hidden relative flex-wrap justify-start">
             {tags.map((tag) => (

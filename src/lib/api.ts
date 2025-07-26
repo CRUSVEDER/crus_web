@@ -15,11 +15,22 @@ type File = {
 }
 
 const firstFourLines = (file: File) => {
-  file.excerpt = file.content
+  // Remove frontmatter and get clean content
+  const contentWithoutFrontmatter = file.content.replace(/^---[\s\S]*?---/, '').trim()
+  
+  // Split into lines, filter out empty lines and markdown syntax
+  const lines = contentWithoutFrontmatter
     .split("\n")
-    .filter((item: string) => item.length)
-    .slice(0, 2)
-    .join(" ")
+    .filter((item: string) => {
+      const trimmed = item.trim()
+      return trimmed.length > 0 && 
+             !trimmed.startsWith('#') && 
+             !trimmed.startsWith('```') &&
+             !trimmed.startsWith('---')
+    })
+    .slice(0, 3) // Take first 3 meaningful lines instead of 2
+  
+  file.excerpt = lines.join(" ")
 }
 
 const postsDirectory = join(process.cwd(), "src", "_posts")
@@ -34,9 +45,15 @@ const getMarkdownFile = async (filePath: string) => {
 }
 
 const excerptToHtml = async (excerpt: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const e1 = await remark().use(html).process(excerpt)
-  return e1.toString()
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    const e1 = await remark().use(html).process(excerpt)
+    return e1.toString()
+  } catch (error) {
+    // Fallback to plain text if HTML processing fails
+    console.warn('Failed to process excerpt to HTML:', error)
+    return `<p>${excerpt}</p>`
+  }
 }
 
 export async function getPostBySlug(slug: string, fields: string[] = []) {
@@ -54,7 +71,17 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
   // Excerpt
   if (excerpt) {
     const htmlExcerpt = await excerptToHtml(excerpt)
-    data.excerpt = htmlExcerpt.replace(/<h[1-4]\/?>/, "")
+    // Clean up the HTML and ensure it's properly formatted
+    data.excerpt = htmlExcerpt
+      .replace(/<h[1-6][^>]*>.*?<\/h[1-6]>/g, '') // Remove all headers
+      .replace(/<[^>]*>/g, (match) => {
+        // Only keep basic formatting tags
+        if (['p', 'strong', 'em', 'code', 'a'].includes(match.replace(/[<>]/g, ''))) {
+          return match
+        }
+        return ''
+      })
+      .trim()
   }
 
   // Ensure only the minimal needed data is exposed
