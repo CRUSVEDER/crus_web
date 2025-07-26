@@ -100,7 +100,7 @@ const Footer = () => {
         </a>
                 {/* Rss */}
         <a
-           href="rss.xml"
+           href="/rss.xml"
            target="_blank"
            aria-label="RSS Feed"
            className="p-1 text-gray-800 rounded-md transition-shadow duration-300 dark:text-gray-100 hover:ring-4 hover:ring-pink-300 focus:ring-4 focus:ring-pink-300 focus:outline-none dark:hover:ring-palevioletred dark:focus:ring-palevioletred"
