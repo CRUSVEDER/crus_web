@@ -27,9 +27,17 @@ const firstParagraph = (file: File) => {
   let firstParagraph = paragraphs[0] || "";
   
   // Stop at the first line break (newline character)
-  const firstLine = firstParagraph.split('\n')[0];
-  
-  file.excerpt = firstLine;
+  const lines = firstParagraph.split('\n').map(line => line.trim());
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    // Skip headers, empty lines, and lines that are just '---'
+    if (line && !line.startsWith('#') && line !== '---') {
+      file.excerpt = line;
+      return;
+    }
+  }
+  // If no valid line found, set excerpt to empty string
+  file.excerpt = "";
 }
 
 const postsDirectory = join(process.cwd(), "src", "_posts")
