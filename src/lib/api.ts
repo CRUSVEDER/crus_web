@@ -14,30 +14,12 @@ type File = {
   content: string
 }
 
-const firstParagraph = (file: File) => {
-  // Remove frontmatter
-  const contentWithoutFrontmatter = file.content.replace(/^---[\s\S]*?---/, '').trim();
-
-  // Split by double newlines (paragraphs)
-  const paragraphs = contentWithoutFrontmatter
-    .split(/\n\s*\n/)
-    .map(p => p.trim())
-    .filter(Boolean);
-
-  let firstParagraph = paragraphs[0] || "";
-  
-  // Stop at the first line break (newline character)
-  const lines = firstParagraph.split('\n').map(line => line.trim());
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    // Skip headers, empty lines, and lines that are just '---'
-    if (line && !line.startsWith('#') && line !== '---') {
-      file.excerpt = line;
-      return;
-    }
-  }
-  // If no valid line found, set excerpt to empty string
-  file.excerpt = "";
+const firstFourLines = (file: File) => {
+  file.excerpt = file.content
+    .split("\n")
+    .filter((item: string) => item.length)
+    .slice(0, 2)
+    .join(" ")
 }
 
 const postsDirectory = join(process.cwd(), "src", "_posts")
@@ -52,15 +34,9 @@ const getMarkdownFile = async (filePath: string) => {
 }
 
 const excerptToHtml = async (excerpt: string) => {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const e1 = await remark().use(html).process(excerpt)
-    return e1.toString()
-  } catch (error) {
-    // Fallback to plain text if HTML processing fails
-    console.warn('Failed to process excerpt to HTML:', error)
-    return `<p>${excerpt}</p>`
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const e1 = await remark().use(html).process(excerpt)
+  return e1.toString()
 }
 
 export async function getPostBySlug(slug: string, fields: string[] = []) {
@@ -69,7 +45,7 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = await fs.readFile(join(postsDirectory, slug, filePath), "utf8")
   const { data, excerpt, content } = matter(fileContents, {
     // @ts-expect-error comment
-    excerpt: firstParagraph,
+    excerpt: firstFourLines,
   })
 
   // Time to Read
@@ -78,17 +54,7 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
   // Excerpt
   if (excerpt) {
     const htmlExcerpt = await excerptToHtml(excerpt)
-    // Clean up the HTML and ensure it's properly formatted
-    data.excerpt = htmlExcerpt
-      .replace(/<h[1-6][^>]*>.*?<\/h[1-6]>/g, '') // Remove all headers
-      .replace(/<[^>]*>/g, (match) => {
-        // Only keep basic formatting tags
-        if (['p', 'strong', 'em', 'code', 'a'].includes(match.replace(/[<>]/g, ''))) {
-          return match
-        }
-        return ''
-      })
-      .trim()
+    data.excerpt = htmlExcerpt.replace(/<h[1-4]\/?>/, "")
   }
 
   // Ensure only the minimal needed data is exposed
