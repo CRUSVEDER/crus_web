@@ -82,11 +82,25 @@ export async function getStaticProps({ params }: Params) {
 
   const { content, data } = matter(source)
 
-  data.excerpt = content
-    .split("\n")
-    .filter((item: string) => item.length)
-    .slice(0, 2)
-    .join(" ")
+  // Use the same excerpt logic as the blog listing
+  const contentWithoutFrontmatter = content.replace(/^---[\s\S]*?---/, '').trim();
+  const paragraphs = contentWithoutFrontmatter
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(Boolean);
+
+  let firstParagraph = paragraphs[0] || "";
+  const lines = firstParagraph.split('\n').map(line => line.trim());
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line && !line.startsWith('#') && line !== '---') {
+      data.excerpt = line;
+      break;
+    }
+  }
+  if (!data.excerpt) {
+    data.excerpt = "";
+  }
 
   data.time = readingTime(content)
 

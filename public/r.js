@@ -1,7 +1,7 @@
 // Rybbit Script
 ;(function () {
   const scriptTag = document.currentScript
-  const ANALYTICS_HOST = "https://stats/api"
+  const ANALYTICS_HOST = "https://your-analytics-domain.com" // Update this to your actual analytics service URL
 
   if (!ANALYTICS_HOST) {
     console.error("Please provide a valid analytics host")
