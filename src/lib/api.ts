@@ -14,23 +14,22 @@ type File = {
   content: string
 }
 
-const firstFourLines = (file: File) => {
-  // Remove frontmatter and get clean content
-  const contentWithoutFrontmatter = file.content.replace(/^---[\s\S]*?---/, '').trim()
+const firstParagraph = (file: File) => {
+  // Remove frontmatter
+  const contentWithoutFrontmatter = file.content.replace(/^---[\s\S]*?---/, '').trim();
+
+  // Split by double newlines (paragraphs)
+  const paragraphs = contentWithoutFrontmatter
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(Boolean);
+
+  let firstParagraph = paragraphs[0] || "";
   
-  // Split into lines, filter out empty lines and markdown syntax
-  const lines = contentWithoutFrontmatter
-    .split("\n")
-    .filter((item: string) => {
-      const trimmed = item.trim()
-      return trimmed.length > 0 && 
-             !trimmed.startsWith('#') && 
-             !trimmed.startsWith('```') &&
-             !trimmed.startsWith('---')
-    })
-    .slice(0, 3) // Take first 3 meaningful lines instead of 2
+  // Stop at the first line break (newline character)
+  const firstLine = firstParagraph.split('\n')[0];
   
-  file.excerpt = lines.join(" ")
+  file.excerpt = firstLine;
 }
 
 const postsDirectory = join(process.cwd(), "src", "_posts")
@@ -62,7 +61,7 @@ export async function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = await fs.readFile(join(postsDirectory, slug, filePath), "utf8")
   const { data, excerpt, content } = matter(fileContents, {
     // @ts-expect-error comment
-    excerpt: firstFourLines,
+    excerpt: firstParagraph,
   })
 
   // Time to Read
