@@ -14,7 +14,7 @@ const DashboardGrid = () => {
   return (
     <Layout>
       <h1 className="mb-8 w-full max-w-screen-lg text-8xl font-bold tracking-tighter leading-tight opacity-100 md:pr-8 lg:mb-12 dark:text-gray-100">
-        dashboard.
+        dashboard.{" "}
       </h1>
 
       <div className="grid grid-cols-[repeat(4,325px)] auto-rows-[325px] gap-6 w-[1390px] mx-auto font-mono relative">

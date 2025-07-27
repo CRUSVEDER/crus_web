@@ -10,9 +10,9 @@ type Dataset = {
 
 const Datasets = () => (
   <Layout>
-    <h1 className="mb-8 w-full max-w-7xl text-5xl sm:text-8xl font-bold tracking-tighter leading-tight dark:text-gray-100 animate-fade_in_up_10">
-      datasets.
-    </h1>
+    <h1 className="mb-8 w-full max-w-7xl text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
+        datasets.{" "}
+      </h1>
     <div className="w-full mx-auto flex flex-col gap-8 px-2 sm:max-w-6xl">
 
       {(Object.entries(datasets) as [string, Dataset][]).map(([key, dataset]) => (

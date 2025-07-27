@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index }: Props) => {
                   sizes={"100%"}
                   width="320"
                   height="120"
-                  className="object-cover object-top w-full rounded-t-md"
+                  className="object-cover object-top w-full"
                 />
               </Parallax>
             </Link>
