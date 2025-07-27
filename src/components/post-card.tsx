@@ -29,7 +29,7 @@ const PostCard = ({ post }: Props) => {
 
   return (
     <div className="flex relative flex-col w-full md:my-4 md:max-w-md">
-      <div className="flex flex-col gap-3 p-4 bg-gray-50 rounded-xl shadow-sm dark:bg-gray-700">
+      <div className="flex flex-col gap-3 p-2 bg-gray-100 rounded-xl shadow-sm dark:bg-gray-700">
         <div className="overflow-hidden h-40 rounded-t-md mask-bottom-strong">
           <ParallaxProvider>
             <Parallax translateY={[0, -10]}>
