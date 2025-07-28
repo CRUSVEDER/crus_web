@@ -1,5 +1,4 @@
 import Layout from "@/components/layout";
-import Blur from "@/components/blur";
 import Link from "next/link";
 
 
@@ -63,7 +62,7 @@ const CTFToolsPage = () => {
         ))}
       </div>
 
-      <Blur />
+      
     </Layout>
   );
 };
