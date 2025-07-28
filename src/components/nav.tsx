@@ -25,6 +25,7 @@ const Navbar = () => {
           <li><Link href="/projects" className="p-0.5">projects</Link></li>
           <li><Link href="/blog" className="p-0.5">blog</Link></li>
           <li><Link href="/dataset" className="p-0.5">dataset</Link></li>
+          <li><Link href="/ctf_tool" className="p-0.5 block">tools</Link></li>
           <li><Link href="https://crusblog.vercel.app" className="p-0.5">ctf</Link></li>
           <li><Link href="/dashbord" className="p-0.5">dashbord</Link></li>
         </ul>
@@ -62,6 +63,7 @@ const Navbar = () => {
           <li><Link href="/projects" className="p-0.5 block">projects</Link></li>
           <li><Link href="/blog" className="p-0.5 block">blog</Link></li>
           <li><Link href="/dataset" className="p-0.5 block">dataset</Link></li>
+          <li><Link href="/ctf_tool" className="p-0.5 block">tools</Link></li>
           <li><Link href="https://crusblog.vercel.app" className="p-0.5 block">ctf</Link></li>
           <li><Link href="/dashbord" className="p-0.5 block">dashbord</Link></li>
         </ul>
