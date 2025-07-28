@@ -14,7 +14,7 @@ const tools = [
   { slug: "raid-calculator", title: "RAID Calculator" },
   { slug: "ping-time-calculator", title: "Ping Time Calculator" },
   { slug: "latency-vs-throughput", title: "Latency vs Throughput" },
-  { slug: "ip-address-calculator", title: "IPv4 to IPv6 Converter" },
+  { slug: "ip-address-calculator", title: "IP Address Calculator" },
   { slug: "ipv4-to-ipv6-converter", title: "IPv4 to IPv6 Converter" },
   { slug: "mac-lookup", title: "MAC Address Lookup" },
   { slug: "ip-range-calculator", title: "IP Range Calculator" },
