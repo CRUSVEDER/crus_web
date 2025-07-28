@@ -130,7 +130,7 @@ const Footer = () => {
       {/* ⓒ Copyright */}
       <div className="text-sm font-mono text-gray-700 dark:text-gray-400">
         © {new Date().getFullYear()}{" "}
-        <a href="/" className="underline hover:text-pink-600 transition">
+        <a href="/" className="underline hover:text-pink-300 transition">
           Crusveder
         </a>. All rights reserved.
       </div>

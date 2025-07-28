@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="relative w-full max-w-7xl py-8 px-4 animate-fade_in">
       {/* Top Bar */}
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-xl font-mono font-bold dark:text-gray-100 text-gray-800 hover:text-pink-500">
+        <Link href="/" className="text-xl font-mono font-bold dark:text-gray-100 text-gray-800  hover:text-pink-300 dark:hover:text-pink-300">
           Yash.
         </Link>
 
