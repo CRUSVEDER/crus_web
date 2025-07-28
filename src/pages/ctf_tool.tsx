@@ -9,6 +9,7 @@ const tools = [
   { slug: "bandwidth-calculator", title: "Bandwidth Calculator" },
   { slug: "uptime-calculator", title: "Uptime Calculator" },
   { slug: "data-transfer-time", title: "Data Transfer Time" },
+  { slug: "encrypt-decrypt-calculator", title: "Encrypt/Decrypt Calculator" },
   { slug: "hashing-calculator", title: "Hashing Calculator" },
   { slug: "file-size-estimator", title: "File Size Estimator" },
   { slug: "raid-calculator", title: "RAID Calculator" },

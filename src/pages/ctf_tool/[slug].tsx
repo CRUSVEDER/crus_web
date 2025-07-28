@@ -29,12 +29,14 @@ import FibonacciHashTool from "@/components/tool-kit/FibonacciHashTool";
 import PacketLossCalculator from "@/components/tool-kit/PacketLossCalculator";
 import FirewallRuleGenerator from "@/components/tool-kit/FirewallRuleGenerator";
 import PortScannerTool from "@/components/tool-kit/PortScannerTool";
+import EncryptDecryptCalculator from "@/components/tool-kit/EncryptDecryptCalculator";
 
 const tools: Record<string, JSX.Element> = {
   "subnet-calculator": <SubnetCalculator />,
   "bandwidth-calculator": <BandwidthCalculator />,
   "uptime-calculator": <UptimeCalculator />,
   "data-transfer-time": <DataTransferTime />,
+  "encrypt-decrypt-calculator": <EncryptDecryptCalculator />,
   "hashing-calculator": <HashingCalculator />,
   "file-size-estimator": <FileSizeEstimator />,
   "raid-calculator": <RaidCalculator />,
