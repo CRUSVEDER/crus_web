@@ -45,7 +45,7 @@ const CTFToolsPage = () => {
       </h1>
 
 
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 w-full max-w-7xl mx-auto font-mono">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6 w-full max-w-7xl mx-auto font-mono">
         {tools.map((tool) => (
           <div
             key={tool.slug}
