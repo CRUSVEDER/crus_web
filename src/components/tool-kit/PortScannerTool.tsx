@@ -70,23 +70,23 @@ export default function PortScannerTool() {
         {/* Scan Options */}
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={useSC} onChange={e => setUseSC(e.target.checked)} />
-          <span className="text-gray-300">Use default scripts (-sC)</span>
+          <span className="text-gray-400">Use default scripts (-sC)</span>
         </label>
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={useSV} onChange={e => setUseSV(e.target.checked)} />
-          <span className="text-gray-300">Service/version detection (-sV)</span>
+          <span className="text-gray-400">Service/version detection (-sV)</span>
         </label>
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={useOS} onChange={e => setUseOS(e.target.checked)} />
-          <span className="text-gray-300">OS detection (-O)</span>
+          <span className="text-gray-400">OS detection (-O)</span>
         </label>
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={usePn} onChange={e => setUsePn(e.target.checked)} />
-          <span className="text-gray-300">Skip ping (-Pn)</span>
+          <span className="text-gray-400">Skip ping (-Pn)</span>
         </label>
         <label className="flex items-center gap-2">
           <input type="checkbox" checked={useAggressive} onChange={e => setUseAggressive(e.target.checked)} />
-          <span className="text-gray-300">Aggressive scan (-A)</span>
+          <span className="text-gray-400">Aggressive scan (-A)</span>
         </label>
 
         {/* Timing */}
@@ -140,7 +140,7 @@ export default function PortScannerTool() {
       {/* Output command */}
       <p className="text-xs text-gray-400 mb-1">Run this on your shell:</p>
       <code className="text-xs break-words whitespace-pre-wrap">{nmapCommand}</code>
-      <p className="text-xs text-gray-500 mt-2">
+      <p className="text-xs text-gray-400 mt-2">
         This is just a command generator. Nmap must be run in your shell or terminal.
       </p>
     </ToolShell>
