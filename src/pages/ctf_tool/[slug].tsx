@@ -30,6 +30,8 @@ import PacketLossCalculator from "@/components/tool-kit/PacketLossCalculator";
 import FirewallRuleGenerator from "@/components/tool-kit/FirewallRuleGenerator";
 import PortScannerTool from "@/components/tool-kit/PortScannerTool";
 import EncryptDecryptCalculator from "@/components/tool-kit/EncryptDecryptCalculator";
+import PasswordGenerator  from "@/components/tool-kit/PasswordGenerator";
+
 
 const tools: Record<string, JSX.Element> = {
   "subnet-calculator": <SubnetCalculator />,
@@ -55,6 +57,7 @@ const tools: Record<string, JSX.Element> = {
   "download-time-estimator": <DownloadTimeEstimator />,
   "cloud-cost-estimator": <CloudCostEstimator />,
   "password-checker": <PasswordChecker />,
+  "password-generator": <PasswordGenerator/>,
   "unix-timestamp-converter": <UnixTimestampConverter />,
   "hex-ascii-converter": <HexASCIIConverter />,
   "bitrate-calculator": <BitrateCalculator />,

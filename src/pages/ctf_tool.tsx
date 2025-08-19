@@ -27,6 +27,7 @@ const tools = [
   { slug: "storage-conversion", title: "Storage Conversion" },
   { slug: "download-time-estimator", title: "Download Time Estimator" },
   { slug: "cloud-cost-estimator", title: "Cloud Cost Estimator" },
+  { slug: "password-generator", title: "Password Generator" },
   { slug: "password-checker", title: "Password Strength Checker" },
   { slug: "unix-timestamp-converter", title: "Unix Timestamp Converter" },
   { slug: "hex-ascii-converter", title: "Hex to ASCII Converter" },
