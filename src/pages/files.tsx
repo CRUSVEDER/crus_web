@@ -25,17 +25,26 @@ async function fetchDriveFiles(folderId: string, apiKey: string) {
 
 export const getStaticProps: GetStaticProps<PdfLibraryProps> = async () => {
   const apiKey = process.env.GDRIVE_API_KEY;
-  if (!apiKey) throw new Error("Missing GDRIVE_API_KEY in .env");
-
   const folderIds = process.env.GDRIVE_FOLDER_IDS?.split(",") || [];
 
   let allFiles: PdfItem[] = [];
-  for (const folderId of folderIds) {
-    const files = await fetchDriveFiles(folderId.trim(), apiKey);
-    allFiles = allFiles.concat(files);
+
+  if (!apiKey) {
+    console.warn("Missing GDRIVE_API_KEY in .env. Returning empty PDF list.");
+    return { props: { pdfFiles: [] } };
   }
 
-  allFiles.sort((a, b) => a.name.localeCompare(b.name));
+  try {
+    for (const folderId of folderIds) {
+      const files = await fetchDriveFiles(folderId.trim(), apiKey);
+      allFiles = allFiles.concat(files);
+    }
+
+    allFiles.sort((a, b) => a.name.localeCompare(b.name));
+  } catch (error) {
+    console.error("Error fetching PDF files from Google Drive:", error);
+    return { props: { pdfFiles: [] } };
+  }
 
   return { props: { pdfFiles: allFiles } };
 };
@@ -90,7 +99,7 @@ export default function PdfLibrary({ pdfFiles }: PdfLibraryProps) {
   if (!isUnlocked) {
     return (
       <Layout>
-        <h1 className="mb-8 w-full max-w-7xl text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
+        <h1 className="mb-8 w-full max-w-7xl text-6xl sm:text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
           locked files.{" "}
         </h1>
         <div className="flex flex-col items-center justify-center min-h-[80vh] gap-8 px-4 animate-fade_in_up_10 font-mono">
@@ -129,7 +138,7 @@ export default function PdfLibrary({ pdfFiles }: PdfLibraryProps) {
 
   return (
     <Layout>
-      <h1 className="mb-8 w-full max-w-7xl text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
+      <h1 className="mb-8 w-full max-w-7xl text-6xl sm:text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
         files.{" "}
       </h1>
       <div className="w-full max-w-7xl mx-auto p-4 flex flex-col gap-8 animate-fade_in_up_10 min-h-[80vh] font-mono">
@@ -156,37 +165,39 @@ export default function PdfLibrary({ pdfFiles }: PdfLibraryProps) {
 
         {/* PDF List */}
         <ul className="flex flex-col gap-4">
-  {filteredPdfFiles.length === 0 ? (
-    <li className="text-gray-100 text-center">No PDFs found.</li> // ✅ valid
-  ) : (
-    filteredPdfFiles.map((pdf, i) => (
-      <li
-        key={i}
-        className="bg-[#1c1c1c]/50 text-white p-4 rounded-sm border border-black/20 dark:border-transparent shadow-md hover:shadow-lg flex items-center justify-between gap-4"
-      >
-        <h2 className="text-lg font-semibold text-gray-100 flex-1 line-clamp-2">
-          {pdf.name}
-        </h2>
-        <div className="flex gap-3">
-          <button
-            onClick={() => handleViewPdf(pdf.fileId)}
-            disabled={isLoading}
-            className="px-4 py-2 bg-gray-300 text-gray-800 rounded text-sm font-medium hover:bg-gray-400 dark:bg-palevioletred dark:text-gray-100 dark:hover:bg-pink-400 font-mono disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? "Loading..." : "View"}
-          </button>
-          <Link
-            href={`https://drive.google.com/uc?export=download&id=${pdf.fileId}`}
-            download
-            className="px-4 py-2 bg-gray-300 text-gray-800 rounded text-sm font-medium hover:bg-gray-400 dark:bg-blue-600 dark:text-gray-100 dark:hover:bg-blue-500 font-mono text-center"
-          >
-            Download
-          </Link>
-        </div>
-      </li>
-    ))
-  )}
-</ul>
+          {filteredPdfFiles.length === 0 ? (
+            <li className="text-gray-100 text-center text-base sm:text-lg">
+              No PDFs found.
+            </li>
+          ) : (
+            filteredPdfFiles.map((pdf, i) => (
+              <li
+                key={i}
+                className="bg-[#1c1c1c]/50 text-white p-4 rounded-sm border border-black/20 dark:border-transparent shadow-md hover:shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              >
+                <h2 className="text-base sm:text-lg font-semibold text-gray-100 flex-1">
+                  {pdf.name}
+                </h2>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handleViewPdf(pdf.fileId)}
+                    disabled={isLoading}
+                    className="px-4 py-2 bg-gray-300 text-gray-800 rounded text-sm font-medium hover:bg-gray-400 dark:bg-palevioletred dark:text-gray-100 dark:hover:bg-pink-400 font-mono disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? "Loading..." : "View"}
+                  </button>
+                  <Link
+                    href={`https://drive.google.com/uc?export=download&id=${pdf.fileId}`}
+                    download
+                    className="px-4 py-2 bg-gray-300 text-gray-800 rounded text-sm font-medium hover:bg-gray-400 dark:bg-blue-600 dark:text-gray-100 dark:hover:bg-blue-500 font-mono text-center"
+                  >
+                    Download
+                  </Link>
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
       </div>
     </Layout>
   );
