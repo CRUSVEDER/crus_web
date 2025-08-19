@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="relative w-full max-w-7xl py-8 px-4 animate-fade_in">
       {/* Top Bar */}
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-xl font-mono font-bold dark:text-gray-100 text-gray-800  hover:text-pink-300 dark:hover:text-pink-300">
+        <Link href="/" className="text-4xl font-mono font-bold dark:text-gray-100 text-gray-800  hover:text-pink-300 dark:hover:text-pink-300">
           Yash.
         </Link>
 
@@ -25,7 +25,8 @@ const Navbar = () => {
           <li><Link href="/projects" className="p-0.5">projects</Link></li>
           <li><Link href="/blog" className="p-0.5">blog</Link></li>
           <li><Link href="/dataset" className="p-0.5">dataset</Link></li>
-          <li><Link href="/ctf_tool" className="p-0.5 block">tools</Link></li>
+          <li><Link href="/ctf_tool" className="p-0.5">tools</Link></li>
+          <li><Link href="/files" className="p-0.5">files</Link></li>
           <li><Link href="https://crusblog.vercel.app" className="p-0.5">ctf</Link></li>
           <li><Link href="/dashbord" className="p-0.5">dashbord</Link></li>
         </ul>
@@ -64,6 +65,7 @@ const Navbar = () => {
           <li><Link href="/blog" className="p-0.5 block">blog</Link></li>
           <li><Link href="/dataset" className="p-0.5 block">dataset</Link></li>
           <li><Link href="/ctf_tool" className="p-0.5 block">tools</Link></li>
+           <li><Link href="/files" className="p-0.5 block">files</Link></li>
           <li><Link href="https://crusblog.vercel.app" className="p-0.5 block">ctf</Link></li>
           <li><Link href="/dashbord" className="p-0.5 block">dashbord</Link></li>
         </ul>
