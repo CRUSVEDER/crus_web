@@ -1,29 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Crus's Blog</title>
-        <link>https://localhost:3003/</link>
-        <description>Cybersecurity blog</description>
-        <lastBuildDate>Thu, 24 Jul 2025 18:37:47 GMT</lastBuildDate>
+        <title>CRUS Blog</title>
+        <link>https://crus.live</link>
+        <description>CRUSVEDER's blog posts on cybersecurity, hacking, and more</description>
+        <lastBuildDate>Tue, 19 Aug 2025 15:11:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Crus</copyright>
         <item>
+            <title><![CDATA[Kali linux Commands]]></title>
+            <link>https://crus.live/posts/kali_linux_cmd</link>
+            <guid isPermaLink="false">https://crus.live/posts/kali_linux_cmd</guid>
+            <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[How to Run Ai locally on Your PC]]></title>
-            <link>https://localhost:3003/posts/how-to-run-ai-locally-on-your-pc</link>
-            <guid isPermaLink="false">https://localhost:3003/posts/how-to-run-ai-locally-on-your-pc</guid>
+            <link>https://crus.live/posts/how-to-run-ai-locally-on-your-pc</link>
+            <guid isPermaLink="false">https://crus.live/posts/how-to-run-ai-locally-on-your-pc</guid>
             <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[How to Run Ai locally on Your PC]]></description>
-            <content:encoded><![CDATA[How to Run Ai locally on Your PC]]></content:encoded>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hacking Environment Setup]]></title>
+            <link>https://crus.live/posts/Hacking_Environment_Setup</link>
+            <guid isPermaLink="false">https://crus.live/posts/Hacking_Environment_Setup</guid>
+            <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Capture The Flag Guide]]></title>
+            <link>https://crus.live/posts/CTF_guide</link>
+            <guid isPermaLink="false">https://crus.live/posts/CTF_guide</guid>
+            <pubDate>Sun, 12 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Nmap cheat sheet]]></title>
+            <link>https://crus.live/posts/Nmap_cheetsheet</link>
+            <guid isPermaLink="false">https://crus.live/posts/Nmap_cheetsheet</guid>
+            <pubDate>Tue, 12 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Linux Networking Essentials]]></title>
-            <link>https://localhost:3003/posts/linux-networking-essentials</link>
-            <guid isPermaLink="false">https://localhost:3003/posts/linux-networking-essentials</guid>
+            <link>https://crus.live/posts/linux-networking-essentials</link>
+            <guid isPermaLink="false">https://crus.live/posts/linux-networking-essentials</guid>
             <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Linux Networking Essentials]]></description>
-            <content:encoded><![CDATA[Linux Networking Essentials]]></content:encoded>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Windows Command Cheet Sheet]]></title>
+            <link>https://crus.live/posts/windows_commands</link>
+            <guid isPermaLink="false">https://crus.live/posts/windows_commands</guid>
+            <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Bash Command Cheet Sheet]]></title>
+            <link>https://crus.live/posts/bash_commands</link>
+            <guid isPermaLink="false">https://crus.live/posts/bash_commands</guid>
+            <pubDate>Sat, 01 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Git Workflow and Commands Explained]]></title>
+            <link>https://crus.live/posts/git_workflow</link>
+            <guid isPermaLink="false">https://crus.live/posts/git_workflow</guid>
+            <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Blog's Skeleton]]></title>
+            <link>https://crus.live/posts/blog_skeleton</link>
+            <guid isPermaLink="false">https://crus.live/posts/blog_skeleton</guid>
+            <pubDate>Sat, 01 Jan 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[No description available]]></description>
+            <content:encoded><![CDATA[No content available]]></content:encoded>
         </item>
     </channel>
 </rss>

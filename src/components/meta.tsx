@@ -39,7 +39,7 @@ const Meta = () => {
             __html: JSON.stringify({
               "@context": "http://schema.org/",
               "@type": "Person",
-              name: "Yash Gholap",
+              name: "Yash",
               image: "https://crus.live/assets/img/avatar.png",
               url: "https://crus.live/",
               jobTitle: "CyberSecurity Professional",

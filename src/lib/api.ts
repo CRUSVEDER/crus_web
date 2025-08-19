@@ -1,86 +1,71 @@
-import fs from "fs/promises"
-import { join } from "path"
-import matter from "gray-matter"
-import readingTime from "reading-time"
-import { remark } from "remark"
-import html from "remark-html"
+// src/lib/api.ts
+import fs from "node:fs/promises";
+import path from "node:path";
+import matter from "gray-matter";
+import { POSTS_PATH, postFilePaths } from "./mdxUtils";
+import type { Post } from "@/types";
 
-type Items = {
-  [key: string]: string
-}
-
-type File = {
-  excerpt: string
-  content: string
-}
-
-const firstTwoLines = (file: File) => {
-  file.excerpt = file.content
-    .split("\n")
-    .filter((item: string) => item.length)
-    .slice(0, 2)
-    .join(" ")
-}
-
-const postsDirectory = join(process.cwd(), "src", "_posts")
-
-export async function getPostSlugs() {
-  return fs.readdir(postsDirectory)
-}
-
-const getMarkdownFile = async (filePath: string) => {
-  const files = await fs.readdir(filePath)
-  return files.filter((file) => file.match(new RegExp(`.*.md`, "ig")))[0]
-}
-
-const excerptToHtml = async (excerpt: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const e1 = await remark().use(html).process(excerpt)
-  return e1.toString()
-}
-
-export async function getPostBySlug(slug: string, fields: string[] = []) {
-  const items: Items = {}
-  const filePath = await getMarkdownFile(join(postsDirectory, slug))
-  const fileContents = await fs.readFile(join(postsDirectory, slug, filePath), "utf8")
-  const { data, excerpt, content } = matter(fileContents, {
-    // @ts-expect-error comment
-    excerpt: firstTwoLines,
-  })
-
-  // Time to Read
-  data.time = readingTime(fileContents)
-
-  // Excerpt
-  if (excerpt) {
-    const htmlExcerpt = await excerptToHtml(excerpt)
-    data.excerpt = htmlExcerpt.replace(/<h[1-4]\/?>/, "")
+export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
+  // Read external posts from posts.json
+  let externalPosts: Post[] = [];
+  try {
+    externalPosts = require("../data/posts.json").map((post: any) => ({
+      slug: post.slug || "",
+      title: post.title || "",
+      date: post.date || new Date().toISOString(),
+      excerpt: post.excerpt || "",
+      content: "",
+      external: post.external || "",
+      cover: post.cover || { imageFile: "" },
+      tags: post.tags || [],
+      category: post.category || "",
+      ogImage: post.ogImage || { url: "" },
+      time: post.time || { text: "", minutes: 0, time: 0, words: 0 },
+    }));
+  } catch (error) {
+    console.error("Error reading posts.json:", error);
   }
 
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = slug
-    }
-    if (field === "content") {
-      items[field] = content
-    }
+  // Read local MDX posts from src/_posts/
+  const localPosts: Post[] = [];
+  const filePaths = await postFilePaths();
+  
+  for (const filePath of filePaths) {
+    const fullPath = path.join(POSTS_PATH, filePath, "index.mdx");
+    try {
+      const fileContents = await fs.readFile(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
 
-    if (data[field]) {
-      items[field] = data[field]
+      const post: Post = {
+        slug: filePath,
+        title: data.title || "",
+        date: data.date || new Date().toISOString(),
+        excerpt: data.excerpt || "",
+        content: fields.includes("content") ? content : "",
+        external: data.external || "",
+        cover: data.cover || { imageFile: "" },
+        tags: data.tags || [],
+        category: data.category || "",
+        ogImage: data.ogImage || { url: "" },
+        time: data.time || { text: "", minutes: 0, time: 0, words: 0 },
+      };
+
+      const filteredPost = fields.length
+        ? Object.fromEntries(
+            Object.entries(post).filter(([key]) => fields.includes(key))
+          )
+        : post;
+
+      localPosts.push(filteredPost as Post);
+    } catch (error) {
+      console.error(`Error reading MDX file ${filePath}:`, error);
     }
-  })
+  }
 
-  return items
-}
+  // Combine and sort posts by date (newest first)
+  const allPosts = [...externalPosts, ...localPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
-export async function getAllPosts(fields: string[] = []) {
-  const slugs = await getPostSlugs()
-  const postFiles = await Promise.all(slugs.map(async (slug) => getPostBySlug(slug, fields)))
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const postLinks = require("../data/posts.json") as Items[]
-  const posts: Items[] = [...postFiles, ...postLinks].sort((post1, post2) =>
-    post1.date > post2.date ? -1 : 1,
-  )
-  return posts
+  return allPosts;
 }

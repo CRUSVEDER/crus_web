@@ -1,35 +1,37 @@
-export type TODO = any
+// src/types/index.ts
+export type TODO = any;
 
 export type Post = {
-  slug: string
-  title: string
-  date: string
+  slug: string;
+  title: string;
+  date: string;
   cover: {
-    imageFile: string
-  }
-  excerpt: string
-  tags: string[]
-  category: string
+    imageFile: string;
+  };
+  excerpt: string;
+  tags: string[];
+  category: string;
   ogImage: {
-    url: string
-  }
-  content: string
+    url: string;
+  };
+  content: string;
+  external: string; // Add this field
   time: {
-    text: string
-    minutes: number
-    time: number
-    words: number
-  }
-}
+    text: string;
+    minutes: number;
+    time: number;
+    words: number;
+  };
+};
 
 export type Project = {
-  name: string
-  url: string
-  image: string
-  desc: string
-  tech: string[]
-}
+  name: string;
+  url: string;
+  image: string;
+  desc: string;
+  tech: string[];
+};
 
 export type Projects = {
-  projects: Project[]
-}
+  projects: Project[];
+};

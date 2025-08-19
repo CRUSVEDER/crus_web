@@ -46,9 +46,9 @@ const Post = ({ source, frontMatter, slug }: Props) => {
         <title>{`${frontMatter.title.trim()} | Yash`}</title>
         <meta property="og:type" content="article" />
         <meta property="og:title" content={`${frontMatter.title} | Yash`} />
-        <meta property="og:url" content={`https://crus.dev/posts/${slug}`} />
+        <meta property="og:url" content={`https://crus.live/posts/${slug}`} />
         <meta property="og:description" content={frontMatter.excerpt ?? ""} />
-        <meta property="article:author" content="Yash Gholap" />
+        <meta property="article:author" content="Crus" />
         <meta property="article:tag" content={frontMatter.tags.join(",")} />
 
         <meta name="twitter:card" content="summary" />

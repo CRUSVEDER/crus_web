@@ -1,44 +1,42 @@
-import { Feed } from 'feed'
-import posts from '../data/posts.json'
-import fs from 'fs'
-import path from 'path'
+// src/lib/generateRSS.ts
+import { Feed } from "feed";
+import { getAllPosts } from "./api";
 
 export async function generateRSSFeed() {
+  const posts = await getAllPosts(["title", "date", "slug", "excerpt", "external"]);
+
+  const site = process.env.SITE_URL || "https://crus.live";
+  const date = new Date();
+
   const feed = new Feed({
-    title: "Crus's Blog",
-    description: "Cybersecurity blog",
-    id: "https://crus.live/",
-    link: "https://crus.live/",
+    title: "CRUS Blog",
+    description: "CRUSVEDER's blog posts on cybersecurity, hacking, and more",
+    id: site,
+    link: site,
     language: "en",
-    favicon: "https://crus.live/favicon.ico",
-    copyright: `All rights reserved ${new Date().getFullYear()}, Crus`,
+    feedLinks: {
+      rss2: `${site}/rss.xml`,
+    },
     author: {
       name: "Crus",
       email: "yashgholap777@gmail.com",
-      link: "https://crus.live/about"
-    }
-  })
+      link: site,
+    },
+    copyright: `All rights reserved ${date.getFullYear()}, Crus`,
+    updated: date,
+  });
 
-  posts.forEach((post) => {
-    if (!post.title || !post.date) return
-
-    // Use a unique identifier for the post, e.g., its index or a generated id
-    const url = `https://crus.live/posts/${encodeURIComponent(post.title.replace(/\s+/g, '-').toLowerCase())}`
-
+  for (const post of posts) {
+    const url = post.external || `${site}/posts/${post.slug}`;
     feed.addItem({
       title: post.title,
       id: url,
       link: url,
-      description: post.title,
-      content: post.title,
-      author: [{ name: 'Crus' }],
-      date: new Date(post.date)
-    })
-  })
+      description: post.excerpt || "No description available",
+      content: post.excerpt || "No content available",
+      date: new Date(post.date),
+    });
+  }
 
-  // Write the RSS XML to the public directory
-  const rssPath = path.resolve('public', 'rss.xml')
-  fs.writeFileSync(rssPath, feed.rss2())
-
-  return feed
+  return feed;
 }
