@@ -7,15 +7,15 @@ export async function generateRSSFeed() {
   const feed = new Feed({
     title: "Crus's Blog",
     description: "Cybersecurity blog",
-    id: "https://localhost:3003/",
-    link: "https://localhost:3003/",
+    id: "https://crus.live/",
+    link: "https://crus.live/",
     language: "en",
-    favicon: "https://localhost:3003/favicon.ico",
+    favicon: "https://crus.live/favicon.ico",
     copyright: `All rights reserved ${new Date().getFullYear()}, Crus`,
     author: {
       name: "Crus",
-      email: "your@email.com",
-      link: "https://localhost:3003/about"
+      email: "yashgholap777@gmail.com",
+      link: "https://crus.live/about"
     }
   })
 
@@ -23,7 +23,7 @@ export async function generateRSSFeed() {
     if (!post.title || !post.date) return
 
     // Use a unique identifier for the post, e.g., its index or a generated id
-    const url = `https://localhost:3003/posts/${encodeURIComponent(post.title.replace(/\s+/g, '-').toLowerCase())}`
+    const url = `https://crus.live/posts/${encodeURIComponent(post.title.replace(/\s+/g, '-').toLowerCase())}`
 
     feed.addItem({
       title: post.title,
