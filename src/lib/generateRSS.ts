@@ -3,7 +3,7 @@ import { Feed } from "feed";
 import { getAllPosts } from "./api";
 
 export async function generateRSSFeed() {
-  const posts = await getAllPosts(["title", "date", "slug", "excerpt", "external"]);
+  const posts = await getAllPosts(["title", "date", "slug", "excerpt", "url"]);
 
   const site = process.env.SITE_URL || "https://crus.live";
   const date = new Date();
@@ -18,16 +18,16 @@ export async function generateRSSFeed() {
       rss2: `${site}/rss.xml`,
     },
     author: {
-      name: "Crus",
+      name: "Yash Gholap",
       email: "yashgholap777@gmail.com",
       link: site,
     },
-    copyright: `All rights reserved ${date.getFullYear()}, Crus`,
+    copyright: `All rights reserved ${date.getFullYear()}, Yash Gholap`,
     updated: date,
   });
 
   for (const post of posts) {
-    const url = post.external || `${site}/posts/${post.slug}`;
+    const url = post.url || `${site}/posts/${post.slug}`;
     feed.addItem({
       title: post.title,
       id: url,
