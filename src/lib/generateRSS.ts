@@ -18,7 +18,7 @@ export async function generateRSSFeed() {
       rss2: `${site}/rss.xml`,
     },
     author: {
-      name: "Yash Gholap",
+      name: "Crus",
       email: "yashgholap777@gmail.com",
       link: site,
     },
