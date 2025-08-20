@@ -2,33 +2,32 @@ import ScreenshotLink from "@/components/screenshot-link"
 
 const IntroDescription = () => (
   <div
-    className="relative p-2 mt-4 w-full text-lg font-thin text-left text-gray-800 md:text-xl lg:pl-10 lg:w-11/12 dark:text-gray-100 font-mono leading-[2.75rem] animate-[var(--animation-fade-in-bloom)] text-balance"
+    className="relative p-2 mt-4 w-full text-lg font-thin text-left text-gray-800 md:text-xl lg:pl-10 lg:w-11/12 dark:text-gray-100 font-mono leading-[2.5rem] animate-[var(--animation-fade-in-bloom)] text-balance"
     style={{ animationDuration: "500ms" }}
   >
-    Hey there 👋 I'm <strong className="font-normal">Crus</strong> — a passionate cybersecurity enthusiast and developer.
-    I work on AI-powered tools, custom utilities, and love diving deep into{" "}
+    Hi, I’m <strong className="font-normal">Crus</strong> — a cybersecurity enthusiast and developer.  
+    I build AI-powered tools, custom utilities, and love exploring{" "}
     <ScreenshotLink url="/projects" image="projects.png">
       security-focused projects
-    </ScreenshotLink>{" "}
-    🧠.
-
-    I regularly participate in{" "}
+    </ScreenshotLink>.
+    <br />
+    I take part in{" "}
     <ScreenshotLink url="http://crusblog.vercel.app" image="ctftime.png">
       CTFs
     </ScreenshotLink>{" "}
-    🎯 and enjoy solving real-world challenges that push my technical limits.
-
-    You’ll find write-ups, experiments, and thoughts on my{" "}
+    and enjoy solving challenges that push my limits.  
+    <br />
+    Check out my{" "}
     <ScreenshotLink url="/blog" image="blog.png">
       blog
     </ScreenshotLink>{" "}
-    📝 — covering topics like ethical hacking, forensic analysis, and automation.
-
-    I also share quick updates and reflections on{" "}
+    for write-ups on ethical hacking, OSINT, forensics, and automation.  
+    <br />
+    I also share quick thoughts on{" "}
     <ScreenshotLink url="https://twitter.com/yashg31" image="twitter.png">
       Twitter
     </ScreenshotLink>{" "}
-    🐦 if you're into tech, tools, and terminal tales.
+    — covering tech, tools, and terminal tales.
   </div>
 )
 
