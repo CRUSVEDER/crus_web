@@ -15,7 +15,7 @@ export type Post = {
     url: string;
   };
   content: string;
-  external: string; // Add this field
+  url: string; // Added for external post URLs (from posts.json)
   time: {
     text: string;
     minutes: number;

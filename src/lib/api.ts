@@ -13,13 +13,13 @@ export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
       slug: post.slug || "",
       title: post.title || "",
       date: post.date || new Date().toISOString(),
-      excerpt: post.excerpt || "",
-      content: "",
-      external: post.external || "",
-      cover: post.cover || { imageFile: "" },
+      excerpt: post.excerpt || "", // Default to empty if missing
       tags: post.tags || [],
       category: post.category || "",
-      ogImage: post.ogImage || { url: "" },
+      ogImage: post.ogImage || { url: "" }, // Default if missing
+      content: "",
+      url: post.url || "",
+      cover: post.cover || { imageFile: "" },
       time: post.time || { text: "", minutes: 0, time: 0, words: 0 },
     }));
   } catch (error) {
@@ -41,12 +41,12 @@ export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
         title: data.title || "",
         date: data.date || new Date().toISOString(),
         excerpt: data.excerpt || "",
-        content: fields.includes("content") ? content : "",
-        external: data.external || "",
-        cover: data.cover || { imageFile: "" },
         tags: data.tags || [],
         category: data.category || "",
         ogImage: data.ogImage || { url: "" },
+        content: fields.includes("content") ? content : "",
+        url: data.url || "", // Default to empty for local posts
+        cover: data.cover || { imageFile: "" },
         time: data.time || { text: "", minutes: 0, time: 0, words: 0 },
       };
 
