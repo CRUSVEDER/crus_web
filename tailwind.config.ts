@@ -56,6 +56,12 @@ export default {
         },
         palevioletred: "#DB7093",
       },
+      screens: {
+        sm: "640px",
+        md: "1080px", 
+        lg: "1280px",
+        xl: "1536px",
+      },
       typography: ({ theme }: PluginUtils) => ({
         DEFAULT: {
           css: {
