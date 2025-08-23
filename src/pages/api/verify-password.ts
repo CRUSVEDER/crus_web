@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Respon
   }
 
   const { password } = req.body;
-  const correctPassword = process.env.PDF_PASSWORD || "1234";
+  const correctPassword = process.env.PDF_PASSWORD;   //|| "1234";
 
   if (!password) {
     return res.status(400).json({ success: false, message: "Password is required" });

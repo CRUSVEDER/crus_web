@@ -8,8 +8,8 @@ const IntroDescription = () => (
     Hi, I’m <strong className="font-normal">Crus</strong> — a cybersecurity enthusiast and developer.  
     I build AI-powered tools, custom utilities, and love exploring{" "}
     <ScreenshotLink url="/projects" image="projects.png">
-      security-focused projects
-    </ScreenshotLink>.
+      security-focused projects.
+    </ScreenshotLink>
     <br />
     I take part in{" "}
     <ScreenshotLink url="http://crusblog.vercel.app" image="ctftime.png">
