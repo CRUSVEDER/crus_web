@@ -388,6 +388,43 @@ Tables are a powerful way to organize data in a structured format. Markdown tabl
 | Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
 | Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
 
+
+## Responsive Tables (with Tailwind + MDX)
+
+Sometimes tables can break on mobile. To fix this, wrap your Markdown tables inside a scrollable `<div>`.
+
+```markdown
+<div className="overflow-x-auto">
+
+| **Category**        | **Resource/Tool**       | **Description**                                        | **Link**                        |
+| :------------------ | :---------------------- | :----------------------------------------------------- | :------------------------------ |
+| **Category 1**      | Tool / Resource Name    | Short description about the tool or resource.          | https://example.com             |
+|                     | Another Tool            | Another description goes here.                         | https://example.com             |
+| **Category 2**      | Tool / Resource Name    | Write about what this tool does in brief.              | https://example.com             |
+|                     | Another Tool            | Add more tools or resources with clear descriptions.   | https://example.com             |
+| **Category 3**      | Tool / Resource Name    | Expand rows as needed.                                 | https://example.com             |
+|                     | Another Tool            | Keep all content aligned properly.                     | https://example.com             |
+| **Category 4**      | Tool / Resource Name    | Continue adding rows based on your needs.              | https://example.com             |
+
+</div>
+```
+
+**Rendered Output:**
+
+<div className="overflow-x-auto">
+
+| **Category**        | **Resource/Tool**       | **Description**                                        | **Link**                        |
+| :------------------ | :---------------------- | :----------------------------------------------------- | :------------------------------ |
+| **Category 1**      | Tool / Resource Name    | Short description about the tool or resource.          | https://example.com             |
+|                     | Another Tool            | Another description goes here.                         | https://example.com             |
+| **Category 2**      | Tool / Resource Name    | Write about what this tool does in brief.              | https://example.com             |
+|                     | Another Tool            | Add more tools or resources with clear descriptions.   | https://example.com             |
+| **Category 3**      | Tool / Resource Name    | Expand rows as needed.                                 | https://example.com             |
+|                     | Another Tool            | Keep all content aligned properly.                     | https://example.com             |
+| **Category 4**      | Tool / Resource Name    | Continue adding rows based on your needs.              | https://example.com             |
+
+</div>
+
 -----
 
 ## Strikethrough (New Addition)
