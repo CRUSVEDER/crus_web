@@ -9,7 +9,7 @@ git clone https://github.com/CRUSVEDER/crus_web
 2.Install dependencies
 
 ```sh
-cd home2021 && pnpm install
+cd crus_web && pnpm install
 ```
 
 3.Start dev server
