@@ -3,7 +3,7 @@
 1.Clone repository
 
 ```sh
-git clone https://github.com/ndom91/home2021
+git clone https://github.com/CRUSVEDER/crus_web
 ```
 
 2.Install dependencies
