@@ -14,9 +14,17 @@ const Blog = ({ allPosts }: Props) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   
-  const filteredMorePosts = morePosts.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredMorePosts = morePosts.filter((post) => {
+  const query = searchQuery.toLowerCase();
+
+  // match title OR tags
+  const matchesTitle = post.title.toLowerCase().includes(query);
+  const matchesTags = post.tags?.some((tag) =>
+    tag.toLowerCase().includes(query)
   );
+
+  return matchesTitle || matchesTags;
+});
 
   return (
     <Layout>
