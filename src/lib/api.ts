@@ -4,6 +4,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import { POSTS_PATH, postFilePaths } from "./mdxUtils";
 import type { Post } from "@/types";
+import readingTime from "reading-time";
+
 
 export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
   // Read external posts from posts.json
@@ -49,6 +51,9 @@ export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
         cover: data.cover || { imageFile: "" },
         time: data.time || { text: "", minutes: 0, time: 0, words: 0 },
       };
+
+      // Time to Read
+  data.time = readingTime(fileContents)
 
       const filteredPost = fields.length
         ? Object.fromEntries(
