@@ -29,43 +29,42 @@ export async function getAllPosts(fields: string[] = []): Promise<Post[]> {
   }
 
   // Read local MDX posts from src/_posts/
-  const localPosts: Post[] = [];
-  const filePaths = await postFilePaths();
-  
-  for (const filePath of filePaths) {
-    const fullPath = path.join(POSTS_PATH, filePath, "index.mdx");
-    try {
-      const fileContents = await fs.readFile(fullPath, "utf8");
-      const { data, content } = matter(fileContents);
+const localPosts: Post[] = [];
+const filePaths = await postFilePaths();
 
-      const post: Post = {
-        slug: filePath,
-        title: data.title || "",
-        date: data.date || new Date().toISOString(),
-        excerpt: data.excerpt || "",
-        tags: data.tags || [],
-        category: data.category || "",
-        ogImage: data.ogImage || { url: "" },
-        content: fields.includes("content") ? content : "",
-        url: data.url || "", // Default to empty for local posts
-        cover: data.cover || { imageFile: "" },
-        time: data.time || { text: "", minutes: 0, time: 0, words: 0 },
-      };
+for (const filePath of filePaths) {
+  const fullPath = path.join(POSTS_PATH, filePath, "index.mdx");
+  try {
+    const fileContents = await fs.readFile(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
 
-      // Time to Read
-  data.time = readingTime(fileContents)
+    // Calculate reading time BEFORE constructing post
+    const time = readingTime(content); // Use content (like getStaticProps) for consistency
 
-      const filteredPost = fields.length
-        ? Object.fromEntries(
-            Object.entries(post).filter(([key]) => fields.includes(key))
-          )
-        : post;
+    const post: Post = {
+      slug: filePath,
+      title: data.title || "",
+      date: data.date || new Date().toISOString(),
+      excerpt: data.excerpt || "",
+      tags: data.tags || [],
+      category: data.category || "",
+      ogImage: data.ogImage || { url: "" },
+      content: fields.includes("content") ? content : "",
+      url: data.url || "",
+      cover: data.cover || { imageFile: "" },
+      time, // Assign computed reading time
+    };
 
-      localPosts.push(filteredPost as Post);
-    } catch (error) {
-      console.error(`Error reading MDX file ${filePath}:`, error);
-    }
+    const filteredPost = fields.length
+      ? Object.fromEntries(
+          Object.entries(post).filter(([key]) => fields.includes(key))
+        )
+      : post;
+    localPosts.push(filteredPost as Post);
+  } catch (error) {
+    console.error(`Error reading MDX file ${filePath}:`, error);
   }
+}
 
   // Combine and sort posts by date (newest first)
   const allPosts = [...externalPosts, ...localPosts].sort(
