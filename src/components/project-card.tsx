@@ -3,6 +3,7 @@ import Link from "next/link"
 import Icon from "@/components/icon"
 import { Parallax } from "react-scroll-parallax"
 import { type Project } from "@/types"
+import { useMemo } from "react"  // Add this import
 
 type Props = {
   index: number
@@ -20,11 +21,15 @@ function randomInteger(min: number, max: number) {
 const ProjectCard = ({ project, index }: Props) => {
   const { name, url, desc, image, tech } = project
 
+  // Generate random values ONCE per card (stable across re-renders)
+  const imageRotation = useMemo(() => randomInteger(-2, 2), [])
+  const parallaxOffset = useMemo(() => randomNumber(60, 120), [])  // Stable random for this project
+
   return (
     <div
       style={{
         // @ts-expect-error setting css variable
-        "--imagerotation": `${randomInteger(-2, 2)}deg`,
+        "--imagerotation": `${imageRotation}deg`,
         animationDelay: `${75 * index}ms`,
       }}
       className={`opacity-0 transition-transform duration-300 hover:rotate-[var(--imagerotation)] hover:-translate-y-4 animate-fade_in ease-[var(--ease-elastic-out-2)]`}
@@ -41,21 +46,25 @@ const ProjectCard = ({ project, index }: Props) => {
               rel="noopener noreferrer"
               className="overflow-y-hidden z-10 mb-2 w-full h-32 bg-gray-200 rounded-t-md dark:bg-gray-600 hover:cursor-pointer"
             >
-              <Parallax translateY={[0, randomNumber(60, 120)]} className="relative h-full">
-                <Image
-                  src={`/assets/img/screenshots/${image}`}
-                  id={`project-image-${image}`}
-                  alt={`${name} Image`}
-                  quality="100"
-                  sizes={"100%"}
-                  width="320"
-                  height="120"
-                  className="object-cover object-top w-full"
-                />
-              </Parallax>
+              {/* Move Parallax HERE - wraps the entire image container */}
+              <div className="relative h-full">
+                <Parallax translateY={[0, parallaxOffset]}>
+                  <Image
+                    src={`/assets/img/screenshots/${image}`}
+                    id={`project-image-${image}`}
+                    alt={`${name} Image`}
+                    quality="100"
+                    sizes={"100%"}
+                    width="320"
+                    height="120"
+                    className="object-cover object-top w-full"
+                  />
+                </Parallax>
+              </div>
             </Link>
           )}
 
+          {/* Rest of your component unchanged */}
           <div className="relative z-10 py-1 px-6">
             {url && (
               <Link
