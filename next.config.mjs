@@ -1,11 +1,11 @@
-import createMDX from "@next/mdx"
-
+// next.config.mjs
+import createMDX from "@next/mdx";
 
 const withMDX = createMDX({
   experimental: {
     mdxRs: true,
   },
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,10 +13,24 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
-    })
-    return config
+    });
+    return config;
   },
   pageExtensions: ["ts", "tsx", "md", "mdx"],
-}
 
-export default withMDX(nextConfig)
+  // Blog's avatar
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com", // GitHub profile images
+      },
+      {
+        protocol: "https",
+        hostname: "github.com", // fallback GitHub avatar redirect
+      },
+    ],
+  },
+};
+
+export default withMDX(nextConfig);
