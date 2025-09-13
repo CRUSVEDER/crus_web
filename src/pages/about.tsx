@@ -5,8 +5,9 @@ const About = () => {
   return (
     <Layout>
       <h1 className="mb-8 w-full max-w-7xl text-8xl font-bold tracking-tighter leading-tight opacity-0 md:pr-8 lg:mb-12 dark:text-gray-100 animate-fade_in_up_10">
-        about.
+        about.{" "}
       </h1>
+      
       <ResumeBanner />
 
       <div className="prose dark:prose-invert max-w-3xl text-lg animate-fade_in_up_10 delay-200">
